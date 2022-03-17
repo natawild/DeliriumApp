@@ -56,7 +56,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
     creatinina = fcol2.number_input(
         "Creatinine (mg/dL)", min_value=0.1, max_value=19.5, step=0.01
     )
-    pcr = fcol2.number_input("PCR (mg/L)", min_value=2.90, max_value=499.00, step=0.01)
+    pcr = fcol2.number_input("CRP (mg/L)", min_value=2.90, max_value=499.00, step=0.01, help="C-reactive protein")
     ph = fcol2.number_input("pH", min_value=7.026, max_value=7.625, step=0.001)
     ca = fcol3.number_input("Ionized calcium (mmol/L)", min_value=0.84, max_value=1.37, step=0.01)
     co2 = fcol3.number_input("Partial pressure of carbon dioxide (mm Hg)", min_value=13.2, max_value=121.3, step=0.01)
@@ -133,7 +133,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         "Sodium blood test": sodio,
         "Blood urea nitrogen": ureia,
         "Creatinine": creatinina,
-        "PCR": pcr,
+        "CRP": pcr,
         "pH": ph,
         "Ionized calcium": ca,
         "CO2": co2,
@@ -199,7 +199,7 @@ def convert_user_input_data_to_predict_format(features):
         "Sodium blood test": normalize(features["Sodium blood test"],42,151),
         "Blood urea nitrogen": normalize(features["Blood urea nitrogen"],4,275),
         "Creatinine": normalize(features["Creatinine"],0.1,19.5),
-        "PCR": normalize(features["PCR"],2.3,499),
+        "CRP": normalize(features["CRP"],2.3,499),
         "pH": normalize(features["pH"],7.026,7.625),
         "Ionized calcium": normalize(features["Ionized calcium"],0.84,1.37),
         "pCO2": normalize(features["CO2"],13.2,121.3),
