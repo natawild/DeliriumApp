@@ -77,9 +77,9 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
     ),
     antidepressores = fcol4.multiselect(
         'Antidepressants',
-        ['Fluvoxamine','Paroxetine', 'Sertralina', 'Venlafaxine', 'Trazodone', 'Amitriptyline'],
+        ['Fluvoxamine','Paroxetine', 'Sertraline', 'Venlafaxine', 'Trazodone', 'Amitriptyline'],
         default=None,
-        help="Fluvoxamine, Paroxetine, Sertralina, Venlafaxine, Trazodone, Amitriptyline"
+        help="Fluvoxamine, Paroxetine, Sertraline, Venlafaxine, Trazodone, Amitriptyline"
     ),
     #antihipertensores = fcol3.multiselect(
     #    'Antihipertensores',
