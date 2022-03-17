@@ -118,7 +118,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         help="Ranitidine, Scopolamine, Desloratadine, Hydroxyzine, Trihexyphenidyl, Trospium"
     ),
     
-    alcoolico = fcol1.radio("Alcoholic?", ["Yes", "No"])
+    alcoolico = fcol1.radio("Alcohol dependence?", ["Yes", "No"])
 
     # Guardar o dicionário numa variável
     user_data = {
@@ -147,7 +147,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         "Corticosteroids":corticosteroides,
         "Digitalis":digitalicos,
         "Other medicines":outrosMed, 
-        "Alcoholic?": alcoolico,  
+        "Alcohol dependence": alcoolico,  
     }
 
     # Transformar os dados inseridos pelo utilizador num dataframe
@@ -211,7 +211,7 @@ def convert_user_input_data_to_predict_format(features):
         "Antidepressants": convertMultiSelect(features["Antidepressants"]),
         "Analgesics": convertMultiSelect(features["Analgesics"]),
         "Anticoagulants": convertMultiSelect(features["Anticoagulants"]),
-        "Alcoholic?": convertMultiSelect(features["Alcoholic?"]),
+        "Alcohol dependence": convertMultiSelect(features["Alcohol dependence"]),
         "Corticosteroids": convertMultiSelect(features["Corticosteroids"]),
         "Digitalis": convertMultiSelect(features["Digitalis"]),
         "Outros Med_Presente": convertMultiSelect(features["Other medicines"]),

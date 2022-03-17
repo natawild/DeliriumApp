@@ -52,10 +52,10 @@ clf = joblib.load('final_model.sav')
 
 #Criacao de um título e subtitulo
 header_container.write("""
-Delirium is a common but serious condition that is under recognized and associated with poor outcomes. However, delirium can be prevented and treated if it is diagnosed in time. It is therefore essential that all hospital staff be are aware of the possibility of delirium developing, and that prompt assessment and appropriate management are ensured. This web application has been designed to support healthcare staff and alert them to the development of delirium in patients admitted to a hospital environment.""")
+Delirium is a common but serious condition that is under recognized and associated with poor outcomes. However, delirium can be prevented and treated if it is diagnosed in time. It is therefore essential that all hospital staff be aware of the possibility of delirium developing, and that prompt assessment and appropriate management are ensured. This web application has been designed to support healthcare staff and alert them to the development of delirium in patients admitted to a hospital environment.""")
 
 filters_container.subheader("Please fill the form")
-filters_container.write("Please complete all the information requested below to make a prediction of delirium. If you do not modify the content of a field, the default value will be applied. Please see the values entered in this form in the table below.")
+filters_container.write("Please complete all the information requested below to make a prediction of delirium. If you do not modify the content of a field, the default value will be applied.s")
 fcol1, fcol2, fcol3, fcol4 = filters_container.columns(4)
 
 # guardar o input do utilizador numa variavel
@@ -63,6 +63,8 @@ user_input = get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4)
 
 # Configurar uma subhead e mostrar aos utilizadores input
 results_container.subheader('Check if you entered the information correctly:')
+results_container.write('Please check the table below to make sure that the data entered matches the desired values.')
+
 results_container.write(user_input)
 
 # Guardar o modelospd.DataFrame(data_to_predict, index=[0]) preditos numa variavel
