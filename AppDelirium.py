@@ -62,7 +62,7 @@ fcol1, fcol2, fcol3, fcol4 = filters_container.columns(4)
 user_input = get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4)
 
 # Configurar uma subhead e mostrar aos utilizadores input
-results_container.subheader('Check if you entered the information correctly:')
+results_container.subheader('Form data validation')
 results_container.write('Please check the table below to make sure that the data entered matches the desired values.')
 
 results_container.write(user_input)
