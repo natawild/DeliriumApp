@@ -54,7 +54,7 @@ clf = joblib.load('final_model.sav')
 header_container.write("""
 Delirium is a common but serious condition that is under recognized and associated with poor outcomes. However, delirium can be prevented and treated if it is diagnosed in time. It is therefore essential that all staff caring for people in the hospital and community are aware of the possibility of delirium developing, and that prompt assessment and appropriate management are ensured. This web application has been designed to support staff working in all sectors of health care to alert them to the development of delirium in patients admitted to a hospital environment.""")
 
-filters_container.subheader("Formulário")
+filters_container.subheader("Please fill the form")
 filters_container.write("Please complete all the information requested below to make a prediction of delirium")
 fcol1, fcol2, fcol3, fcol4 = filters_container.columns(4)
 

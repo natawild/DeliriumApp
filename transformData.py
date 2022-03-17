@@ -27,7 +27,7 @@ def convertGenderToInt(variavel):
 
 
 def convertAlcool(variavel):
-    if variavel[0] == "Sim":
+    if variavel[0] == "Yes":
         return 1
     return 0
 
@@ -43,34 +43,34 @@ def normalize(value, min, max):
 
 def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
     
-    proveniencia = fcol1.selectbox("Local de Proveniencia", ("Home", "Inter-Hospitalar", "Intra-Hospitalar", "Lar"))
-    grupoDiagnostico = fcol1.selectbox("Grupo de Diagnóstico", ("Hemato-Oncologico","Neurologico","Respiratorio","Cardiovascular","Musculo-esqueletico","Geniturinário","Gastrointestinal","Outro"))
-    localSU = fcol1.selectbox("Estado do doente",("Ambulatório","UCISU","UDC1","UDC2"))
+    proveniencia = fcol1.selectbox("Patient origin", ("Home", "Inter-hospital patient transfer", "Intra-hospital patient transfer", "Nursing home"))
+    grupoDiagnostico = fcol1.selectbox("Admission category", ("Hemato-oncology","Neurology","Respiratory","Cardiovascular","Musculoskeletal","Genitourinary","Gastrointestinal","Other"))
+    localSU = fcol1.selectbox("Urgent admission",("Ambulatory","UCISU","UDC1","UDC2"))
     idade = fcol1.slider("Age", min_value=18, max_value=100, step=1)
     gender = fcol1.radio("Gender:", ("Masculine", "Feminine"))
-    tempo = fcol1.number_input("Tempo de permanência no SU", min_value=0.08, max_value=12.0, step=0.01 ,help="Em dias")
-    sirs = fcol2.slider("SIRS Criteria:",min_value=0, max_value=4, step=1, help="Temperatura corporal, Frequência respiratória, Frequência cardíaca, Número de leucócitos")
+    tempo = fcol1.number_input("Length of stay", min_value=0.08, max_value=12.0, step=0.01 ,help="Number of days")
+    sirs = fcol2.slider("SIRS Criteria:",min_value=0, max_value=4, step=1, help="fever >38.0°C or hypothermia <36.0°C, tachycardia >90 beats/minute, tachypnea >20 breaths/minute, leucocytosis >12*109/l or leucopoenia <4*109/l")
     glicose = fcol2.number_input("Glucose levels (mg/dL)", min_value=41.0, max_value=1000.0, step=0.01)
     sodio = fcol2.number_input("Sodium blood test (mEq/L)", min_value=42.0, max_value=151.0, step=0.01)
-    ureia = fcol2.number_input("Ureia (mg/dL)", min_value=4.0, max_value=275.0, step=0.01)
+    ureia = fcol2.number_input("Blood urea nitrogen (mg/dL)", min_value=4.0, max_value=275.0, step=0.01)
     creatinina = fcol2.number_input(
-        "Creatinina (mg/dL)", min_value=0.1, max_value=19.5, step=0.01
+        "Creatinine (mg/dL)", min_value=0.1, max_value=19.5, step=0.01
     )
     pcr = fcol2.number_input("PCR (mg/L)", min_value=2.90, max_value=499.00, step=0.01)
     ph = fcol2.number_input("pH", min_value=7.026, max_value=7.625, step=0.001)
-    ca = fcol3.number_input("Cálcio ionizado (mmol/L)", min_value=0.84, max_value=1.37, step=0.01)
-    co2 = fcol3.number_input("Pressão parcial de dióxido de carbono (mm Hg)", min_value=13.2, max_value=121.3, step=0.01)
-    o2 = fcol3.number_input("Pressão parcial de oxigénio (mm Hg)", min_value=34.1, max_value=178.1, step=0.01)
-    hco3 = fcol3.number_input("Ião bicarbonato (mEq/L)", min_value=7.40, max_value=39.1, step=0.01)
+    ca = fcol3.number_input("Ionized calcium (mmol/L)", min_value=0.84, max_value=1.37, step=0.01)
+    co2 = fcol3.number_input("Partial pressure of carbon dioxide (mm Hg)", min_value=13.2, max_value=121.3, step=0.01)
+    o2 = fcol3.number_input("Partial pressure of oxygen (mm Hg)", min_value=34.1, max_value=178.1, step=0.01)
+    hco3 = fcol3.number_input("Bicarbonate (mEq/L)", min_value=7.40, max_value=39.1, step=0.01)
 
     antidislipidemicos = fcol3.multiselect(
-        'Antidislipidemicos',
-        ['Rosuvastatina', 'Atorvastatina', 'Pravastatina', 'Sinvastatina', 'Fluvastatina'],
+        'Antidyslipidemic',
+        ['Rosuvastatine', 'Atorvastatine', 'Pravastatine', 'Sinvastatine', 'Fluvastatine'],
         default=None,
-        help="Rosuvastatina, Atorvastatina, Pravastatina, Sinvastatina, Fluvastatina"
+        help="Rosuvastatine, Atorvastatine, Pravastatine, Sinvastatine, Fluvastatine"
     ),
     antipsicoticos = fcol3.multiselect(
-        'Antipsicóticos',
+        'Antipsychotics',
         ['Haloperidol', 'Quetiapine', 'Risperidone', 'Paliperidone', 'Iloperidone'],
         default=None,
         help="Haloperidol, Quetiapine, Risperidone, Paliperidone, Iloperidone"
@@ -88,13 +88,13 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
     #    help="HEP_TEXT"
     #),
     analgesicos = fcol4.multiselect(
-        'Analgésicos',
+        'Analgesics',
         ['Nifedipine','Captopril','Clonidine'],
         default=None,
         help="Nifedipine, Captopril, Clonidine"
     ),
     anticoagulantes = fcol4.multiselect(
-        'Anticoagulantes',
+        'Anticoagulants',
         ['Warfarin','Dipyridamole'],
         default=None,
         help="Warfarin, Dipyridamole"
@@ -106,48 +106,48 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         help="Hydrocortisone, Prednisone"
     ),
     digitalicos = fcol4.multiselect(
-        'Digitálicos',
+        'Digitalis',
         ['Digoxin'],
         default=None,
         help="Digoxin"
     ),
     outrosMed = fcol4.multiselect(
-        'Outros Medicamentos',
+        'Other medicines',
         ['Ranitidine','Scopolamine', 'Desloratadine', 'Hydroxyzine', 'Trihexyphenidyl', 'Trospium'],
         default= None,
         help="Ranitidine, Scopolamine, Desloratadine, Hydroxyzine, Trihexyphenidyl, Trospium"
     ),
     
-    alcoolico = fcol1.radio("Consumo de alcool em excesso?", ["Sim", "Não"])
+    alcoolico = fcol1.radio("Alcoholic?", ["Yes", "No"])
 
     # Guardar o dicionário numa variável
     user_data = {
-        "Proveniencia": proveniencia,
-        "Grupo de Diagnostico": grupoDiagnostico,
-        "localSU": localSU,
+        "Patient origin": proveniencia,
+        "Admission category": grupoDiagnostico,
+        "Urgent admission": localSU,
         "Age": idade,
         "Gender": gender,
-        "Tempo": tempo,
+        "Length of stay": tempo,
         "SIRS Criteria" : sirs,
         "Glucose levels": glicose,
         "Sodium blood test": sodio,
-        "Ureia": ureia,
-        "Creatinina": creatinina,
+        "Blood urea nitrogen": ureia,
+        "Creatinine": creatinina,
         "PCR": pcr,
         "pH": ph,
-        "ca": ca,
+        "Ionized calcium": ca,
         "CO2": co2,
         "O2": o2,
         "HCO3": hco3,
-        "Antidislipidemicos":antidislipidemicos,
-        "Antipsicoticos":antipsicoticos,
+        "Antidyslipidemic":antidislipidemicos,
+        "Antipsychotics":antipsicoticos,
         "Antidepressants":antidepressores,
-        "Analgésicos":analgesicos,
-        "Anticoagulantes": anticoagulantes,
-        "Corticosteroides":corticosteroides,
-        "Digitalicos":digitalicos,
-        "Outros Medicamentos":outrosMed, 
-        "Consumo de álcool": alcoolico,  
+        "Analgesics":analgesicos,
+        "Anticoagulants": anticoagulantes,
+        "Corticosteroids":corticosteroides,
+        "Digitalis":digitalicos,
+        "Other medicines":outrosMed, 
+        "Alcoholic?": alcoolico,  
     }
 
     # Transformar os dados inseridos pelo utilizador num dataframe
@@ -157,7 +157,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
 
 def convertLocalSu(variavel):
     switcher = {
-        'Ambulatório': 0,
+        'Ambulatory': 0,
         'UCISU': 1,
         'UDC1': 2,
         'UDC2': 3,
@@ -167,23 +167,23 @@ def convertLocalSu(variavel):
 def convertProv(variavel):
     dic = {
         'Home': 1 if variavel[0] == 'Home' else 0, 
-        'Inter-Hospitalar': 1 if variavel[0] == 'Inter-Hospitalar' else 0,
-        'Intra-Hospitalar': 1 if variavel[0] == 'Intra-Hospitalar' else 0,
-        'Lar': 1 if variavel[0] == 'Lar' else 0,
+        'Inter-hospital patient transfer': 1 if variavel[0] == 'Inter-hospital patient transfer' else 0,
+        'Intra-hospital patient transfer': 1 if variavel[0] == 'Intra-hospital patient transfer' else 0,
+        'Nursing home': 1 if variavel[0] == 'Nursing home' else 0,
     }
     return dic
 
 
 def convertGrupoDiag(variavel):
     dic = {
-        'GrupoDiagn_Hemato-Oncologico': 1 if variavel[0] == 'Hemato-Oncologico' else 0, 
-        'GrupoDiagn_Neurologico': 1 if variavel[0] == 'Neurologico' else 0,
-        'GrupoDiagn_Respiratorio': 1 if variavel[0] == 'Respiratorio' else 0,
-        'GrupoDiagn_Musculoesqueletico': 1 if variavel[0] == 'Musculo-esqueletico' else 0,
+        'GrupoDiagn_Hemato-Oncologico': 1 if variavel[0] == 'Hemato-oncology' else 0, 
+        'GrupoDiagn_Neurologico': 1 if variavel[0] == 'Neurology' else 0,
+        'GrupoDiagn_Respiratorio': 1 if variavel[0] == 'Respiratory' else 0,
+        'GrupoDiagn_Musculoesqueletico': 1 if variavel[0] == 'Musculoskeletal ' else 0,
         'GrupoDiagn_Cardiovascular': 1 if variavel[0] == 'Cardiovascular' else 0,
-        'GrupoDiagn_Geniturinario': 1 if variavel[0] == 'Geniturinário' else 0,
+        'GrupoDiagn_Geniturinario': 1 if variavel[0] == 'Genitourinary' else 0,
         'GrupoDiagn_Gastrointestinal': 1 if variavel[0] == 'Gastrointestinal' else 0,
-        'GrupoDiagn_Outro': 1 if variavel[0] == 'Outro' else 0,
+        'GrupoDiagn_Outro': 1 if variavel[0] == 'Other' else 0,
     }
     return dic
 
@@ -193,31 +193,31 @@ def convert_user_input_data_to_predict_format(features):
     data_to_predict = {
         "Age": normalize(features["Age"],18,100),
         "Gender": convertGenderToInt(features["Gender"]),
-        "Interna_Dias": normalize(features["Tempo"],0.083,12),
+        "Length of stay": normalize(features["Length of stay"],0.083,12),
         "SIRS" : normalize(features["SIRS Criteria"],0,4),
         "Glucose levels": normalize(features["Glucose levels"],41,1000),
         "Sodium blood test": normalize(features["Sodium blood test"],42,151),
-        "Ureia": normalize(features["Ureia"],4,275),
-        "Creatinina": normalize(features["Creatinina"],0.1,19.5),
+        "Blood urea nitrogen": normalize(features["Blood urea nitrogen"],4,275),
+        "Creatinine": normalize(features["Creatinine"],0.1,19.5),
         "PCR": normalize(features["PCR"],2.3,499),
         "pH": normalize(features["pH"],7.026,7.625),
-        "Ca_ionizado": normalize(features["ca"],0.84,1.37),
+        "Ionized calcium": normalize(features["Ionized calcium"],0.84,1.37),
         "pCO2": normalize(features["CO2"],13.2,121.3),
         "pO2": normalize(features["O2"],34.1,178.1),
         "HCO3": normalize(features["HCO3"],7.40,39.1),
-        "Local_SU": convertLocalSu(features["localSU"]),
-        "Antidislipidemicos": convertMultiSelect(features["Antidislipidemicos"]),
-        "Antipsicoticos": convertMultiSelect(features["Antipsicoticos"]),
+        "Urgent admission": convertLocalSu(features["Urgent admission"]),
+        "Antidyslipidemic": convertMultiSelect(features["Antidyslipidemic"]),
+        "Antipsychotics": convertMultiSelect(features["Antipsychotics"]),
         "Antidepressants": convertMultiSelect(features["Antidepressants"]),
-        "Analgesicos": convertMultiSelect(features["Analgésicos"]),
-        "Anticoagulantes": convertMultiSelect(features["Anticoagulantes"]),
-        "Alcoolico": convertMultiSelect(features["Consumo de álcool"]),
-        "Corticosteroides": convertMultiSelect(features["Corticosteroides"]),
-        "Digitalicos": convertMultiSelect(features["Digitalicos"]),
-        "Outros Med_Presente": convertMultiSelect(features["Outros Medicamentos"]),
+        "Analgesics": convertMultiSelect(features["Analgesics"]),
+        "Anticoagulants": convertMultiSelect(features["Anticoagulants"]),
+        "Alcoholic?": convertMultiSelect(features["Alcoholic?"]),
+        "Corticosteroids": convertMultiSelect(features["Corticosteroids"]),
+        "Digitalis": convertMultiSelect(features["Digitalis"]),
+        "Outros Med_Presente": convertMultiSelect(features["Other medicines"]),
     }
 
-    merged = {** data_to_predict, **convertProv(features["Proveniencia"])}
-    merged = {** merged, **convertGrupoDiag(features["Grupo de Diagnostico"])}
+    merged = {** data_to_predict, **convertProv(features["Patient origin"])}
+    merged = {** merged, **convertGrupoDiag(features["Admission category"])}
 
     return pd.DataFrame(merged, index=[0])
