@@ -50,18 +50,18 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
     gender = fcol1.radio("Gender:", ("Masculine", "Feminine"))
     tempo = fcol1.number_input("Length of stay", min_value=0.08, max_value=12.0, step=0.01 ,help="Number of days")
     sirs = fcol2.slider("SIRS Criteria:",min_value=0, max_value=4, step=1, help="fever >38.0°C or hypothermia <36.0°C, tachycardia >90 beats/minute, tachypnea >20 breaths/minute, leucocytosis >12*109/l or leucopoenia <4*109/l")
-    glicose = fcol2.number_input("Glucose levels (mg/dL)", min_value=41.0, max_value=1000.0, step=0.01)
-    sodio = fcol2.number_input("Sodium blood test (mEq/L)", min_value=42.0, max_value=151.0, step=0.01)
-    ureia = fcol2.number_input("Blood urea nitrogen (mg/dL)", min_value=4.0, max_value=275.0, step=0.01)
+    glicose = fcol2.number_input("Glucose levels (mg/dL)", min_value=41.0, max_value=1000.0, step=0.01, help="Reference range: 90-130 mg/dL")
+    sodio = fcol2.number_input("Sodium blood test (mEq/L)", min_value=42.0, max_value=151.0, step=0.01, help="Reference range: 135-146 mEq/L")
+    ureia = fcol2.number_input("Blood urea nitrogen (mg/dL)", min_value=4.0, max_value=275.0, step=0.01, help="Reference range: 19-49 mg/dL")
     creatinina = fcol2.number_input(
-        "Creatinine (mg/dL)", min_value=0.1, max_value=19.5, step=0.01
+        "Creatinine (mg/dL)", min_value=0.1, max_value=19.5, step=0.01, help="Reference range: 0.6-1.2 mg/dL"
     )
-    pcr = fcol2.number_input("CRP (mg/L)", min_value=2.90, max_value=499.00, step=0.01, help="C-reactive protein")
-    ph = fcol2.number_input("pH", min_value=7.026, max_value=7.625, step=0.001)
-    ca = fcol3.number_input("Ionized calcium (mmol/L)", min_value=0.84, max_value=1.37, step=0.01)
-    co2 = fcol3.number_input("Partial pressure of carbon dioxide (mm Hg)", min_value=13.2, max_value=121.3, step=0.01)
-    o2 = fcol3.number_input("Partial pressure of oxygen (mm Hg)", min_value=34.1, max_value=178.1, step=0.01)
-    hco3 = fcol3.number_input("Bicarbonate (mEq/L)", min_value=7.40, max_value=39.1, step=0.01)
+    pcr = fcol2.number_input("CRP (mg/L)", min_value=2.90, max_value=499.00, step=0.01, help="C-reactive protein. Reference range: < 5mg/L")
+    ph = fcol2.number_input("pH", min_value=7.026, max_value=7.625, step=0.001, help="Reference range: 7.35-7.45")
+    ca = fcol3.number_input("Ionized calcium (mmol/L)", min_value=0.84, max_value=1.37, step=0.01, help="Reference range: 1.15-1.35 mmol/L")
+    co2 = fcol3.number_input("Partial pressure of carbon dioxide (mm Hg)", min_value=13.2, max_value=121.3, step=0.01, help=" Reference range: 33-45 mm Hg")
+    o2 = fcol3.number_input("Partial pressure of oxygen (mm Hg)", min_value=34.1, max_value=178.1, step=0.01, help= "Reference range: 75-105 mm Hg")
+    hco3 = fcol3.number_input("Bicarbonate (mEq/L)", min_value=7.40, max_value=39.1, step=0.01, help="Reference range: 22-28 mEq/L")
 
     antidislipidemicos = fcol3.multiselect(
         'Antidyslipidemic',
@@ -81,12 +81,14 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         default=None,
         help="Fluvoxamine, Paroxetine, Sertraline, Venlafaxine, Trazodone, Amitriptyline"
     ),
+    
     #antihipertensores = fcol3.multiselect(
     #    'Antihipertensores',
     #    ['Nifedipine','Captopril','Clonidine'],
     #    default=None,
     #    help="HEP_TEXT"
     #),
+
     analgesicos = fcol4.multiselect(
         'Analgesics',
         ['Nifedipine','Captopril','Clonidine'],
