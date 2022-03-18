@@ -100,7 +100,7 @@ def get_user_input_with_gasome(fcol1, fcol2, fcol3, fcol4):
         help="Warfarin, Dipyridamole"
     ),
     corticosteroides = fcol4.multiselect(
-        'Corticosteroides',
+        'Corticosteroids',
         ['Hydrocortisone','Prednisone'],
         default=None,
         help="Hydrocortisone, Prednisone"
